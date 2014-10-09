@@ -1,0 +1,9 @@
+{
+    "name": "kupra-web",
+    "dependencies": {
+        "angular": "~1.2.3"
+    },
+    "devDependencies": {
+        "bootstrap": "~3.0.1"
+    }
+}
