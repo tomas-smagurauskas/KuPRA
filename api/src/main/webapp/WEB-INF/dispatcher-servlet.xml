@@ -2,6 +2,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -10,13 +11,16 @@
            http://www.springframework.org/schema/tx
            http://www.springframework.org/schema/tx/spring-tx.xsd
            http://www.springframework.org/schema/data/jpa
-           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <tx:annotation-driven />
+
     <context:component-scan base-package="api.controllers" />
     <context:component-scan base-package="api.domain.entities" />
     <jpa:repositories base-package="api.domain.repositories" />
-
+    <mvc:annotation-driven />
+    <tx:annotation-driven />
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
