@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -21,11 +22,18 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/login")
     @ResponseBody
-    public ServiceResponse login(@RequestBody User user, HttpServletResponse httpServletResponse) {
+    public ServiceResponse login(@RequestBody User user, HttpServletResponse httpServletResponse,
+                                 HttpServletRequest httpServletRequest) {
         ServiceResponse response = new ServiceResponse();
 
         try {
             Session session = authenticationService.login(user.getUsername(), user.getPassword());
+
+            for(Cookie cookie : httpServletRequest.getCookies()) {
+                cookie.setMaxAge(0);
+                httpServletResponse.addCookie(cookie);
+            }
+
             httpServletResponse.addCookie(new Cookie("sessionToken", session.getToken()));
         }
         catch (Exception ex) {
