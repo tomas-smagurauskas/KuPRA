@@ -5,14 +5,23 @@
     <artifactId>kupra</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>auth</module>
         <module>api</module>
         <module>web</module>
     </modules>
     <packaging>pom</packaging>
-    <name>kupra</name>
+    <name>root</name>
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.3.v20140905</version>
+            </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -25,6 +34,7 @@
                 <configuration>
                     <outputDirectory>release</outputDirectory>
                     <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                    <attachClasses>true</attachClasses>
                 </configuration>
             </plugin>
 
@@ -42,7 +52,8 @@
                             <filesets>
                                 <fileset>
                                     <directory>api/release</directory>
-                                    <directory>web/release</directory>
+                                    <directory>root/release</directory>
+                                    <directory>auth/release</directory>
                                 </fileset>
                             </filesets>
                         </configuration>

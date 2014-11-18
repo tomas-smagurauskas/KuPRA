@@ -15,9 +15,9 @@
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-
     <context:component-scan base-package="api.controllers" />
     <context:component-scan base-package="api.domain.entities" />
+    <context:component-scan base-package="api.services" />
     <jpa:repositories base-package="api.domain.repositories" />
     <mvc:annotation-driven />
     <tx:annotation-driven />
@@ -51,5 +51,10 @@
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
-
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/asd/**"/>
+            <bean class="api.interceptors.AuthenticationInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
