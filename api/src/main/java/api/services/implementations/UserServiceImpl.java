@@ -1,6 +1,7 @@
 package api.services.implementations;
 
 import api.domain.entities.authentication.User;
+import api.domain.entities.authentication.enums.UserRole;
 import api.domain.repositories.UserRepository;
 import api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
+        user.setRole(UserRole.USER);
         userRepository.saveAndFlush(user);
         return user;
     }

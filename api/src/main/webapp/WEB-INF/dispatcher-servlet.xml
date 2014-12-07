@@ -53,8 +53,12 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/asd/**"/>
+            <mvc:mapping path="/app/**"/>
             <bean class="api.interceptors.AuthenticationInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <bean class="api.interceptors.AdminAuthenticationInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

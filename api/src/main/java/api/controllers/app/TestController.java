@@ -1,4 +1,4 @@
-package api.controllers;
+package api.controllers.app;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,7 +13,7 @@ public class TestController {
 
     //TESTING PURPOSES
 
-    @RequestMapping(value="/asd/asd")
+    @RequestMapping(value="/app/asd")
     public @ResponseBody String getAsd() {
         return "ssssss";
     }
@@ -24,7 +24,7 @@ public class TestController {
         return "asd";
     }
 
-    @RequestMapping(value = "/asd")
+    @RequestMapping(value = "/app")
     public @ResponseBody String getAsdd() {
 
         return "donddde";

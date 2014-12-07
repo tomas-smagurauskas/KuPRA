@@ -1,5 +1,7 @@
 package api.domain.entities.authentication;
 
+import api.domain.entities.authentication.enums.UserRole;
+
 import javax.persistence.*;
 
 /**
@@ -13,6 +15,7 @@ public class User {
     private Integer id;
     private String username;
     private String password;
+    private UserRole role;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,4 +46,12 @@ public class User {
         this.password = password;
     }
 
+    @Column(name = "role")
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
 }

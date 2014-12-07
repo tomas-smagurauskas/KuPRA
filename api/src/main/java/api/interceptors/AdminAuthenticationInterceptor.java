@@ -2,6 +2,7 @@ package api.interceptors;
 
 import api.domain.entities.authentication.Session;
 import api.domain.entities.authentication.User;
+import api.domain.entities.authentication.enums.UserRole;
 import api.domain.repositories.SessionRepository;
 import com.fasterxml.uuid.EthernetAddress;
 import com.fasterxml.uuid.Generators;
@@ -16,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 
 /**
- * Created by tomas on 14.10.13.
+ * Created by tomas on 14.12.7.
  */
-public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
+public class AdminAuthenticationInterceptor extends HandlerInterceptorAdapter {
 
     TimeBasedGenerator generator = Generators.timeBasedGenerator(EthernetAddress.fromInterface());
 
@@ -55,6 +56,11 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
             }
 
             User activeUser = sessions.get(0).getUser();
+
+            if (activeUser.getRole() != UserRole.ADMIN) {
+                response.setStatus(401);
+                return false;
+            }
 
             for (Session session : sessions) {
                 sessionRepository.delete(session);
@@ -95,4 +101,5 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
             throws Exception {
 
     }
+
 }

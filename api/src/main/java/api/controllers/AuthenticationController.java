@@ -29,9 +29,11 @@ public class AuthenticationController {
         try {
             Session session = authenticationService.login(user.getUsername(), user.getPassword());
 
-            for(Cookie cookie : httpServletRequest.getCookies()) {
-                cookie.setMaxAge(0);
-                httpServletResponse.addCookie(cookie);
+            if (httpServletRequest.getCookies() != null) {
+                for (Cookie cookie : httpServletRequest.getCookies()) {
+                    cookie.setMaxAge(0);
+                    httpServletResponse.addCookie(cookie);
+                }
             }
 
             httpServletResponse.addCookie(new Cookie("sessionToken", session.getToken()));
