@@ -6,6 +6,7 @@ import api.domain.response.ServiceResponse;
 import api.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import utils.RestUrls;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ public class AuthenticationController {
     @Autowired
     AuthenticationService authenticationService;
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = RestUrls.LOGIN)
     @ResponseBody
     public ServiceResponse login(@RequestBody User user, HttpServletResponse httpServletResponse,
                                  HttpServletRequest httpServletRequest) {
@@ -48,7 +49,7 @@ public class AuthenticationController {
         return response;
     }
 
-    @RequestMapping(value = "/logout")
+    @RequestMapping(value = RestUrls.LOGOUT)
     @ResponseBody
     public ServiceResponse logout(@CookieValue("sessionToken") String token,
                                   HttpServletResponse httpServletResponse) {

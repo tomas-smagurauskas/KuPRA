@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import utils.RestUrls;
 
 /**
  * Created by tomas on 14.11.17.
@@ -18,7 +19,7 @@ public class RegistrationController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/register")
+    @RequestMapping(value = RestUrls.REGISTER)
     @ResponseBody
     public ServiceResponse register(@RequestBody User user) {
         ServiceResponse response = new ServiceResponse();
