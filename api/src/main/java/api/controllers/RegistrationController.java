@@ -1,7 +1,7 @@
 package api.controllers;
 
+import api.domain.datatransferobjects.UserDTO;
 import api.domain.entities.authentication.User;
-import api.domain.response.ServiceResponse;
 import api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import utils.RestUrls;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by tomas on 14.11.17.
@@ -21,19 +23,18 @@ public class RegistrationController {
 
     @RequestMapping(value = RestUrls.REGISTER)
     @ResponseBody
-    public ServiceResponse register(@RequestBody User user) {
-        ServiceResponse response = new ServiceResponse();
+    public UserDTO register(@RequestBody User user, HttpServletResponse httpServletResponse) {
 
         try {
             user = userService.createUser(user);
             user.setPassword(null);
-            response.setResult(user);
+            return UserDTO.fromEntity(user);
         }
         catch (Exception ex) {
-            response.setError("ERROR CREATING USER");
+            httpServletResponse.setStatus(500);
+            return null;
         }
 
-        return response;
     }
 
 }

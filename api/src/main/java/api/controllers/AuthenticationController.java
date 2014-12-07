@@ -23,7 +23,7 @@ public class AuthenticationController {
 
     @RequestMapping(value = RestUrls.LOGIN)
     @ResponseBody
-    public ServiceResponse login(@RequestBody User user, HttpServletResponse httpServletResponse,
+    public void login(@RequestBody User user, HttpServletResponse httpServletResponse,
                                  HttpServletRequest httpServletRequest) {
         ServiceResponse response = new ServiceResponse();
 
@@ -40,20 +40,17 @@ public class AuthenticationController {
             httpServletResponse.addCookie(new Cookie("sessionToken", session.getToken()));
         }
         catch (Exception ex) {
-            response.setError("Invalid username or password");
-            response.setResult(false);
-            return response;
+            httpServletResponse.setStatus(400);
+            return;
         }
 
-        response.setResult(true);
-        return response;
+        return;
     }
 
     @RequestMapping(value = RestUrls.LOGOUT)
     @ResponseBody
-    public ServiceResponse logout(@CookieValue("sessionToken") String token,
+    public void logout(@CookieValue("sessionToken") String token,
                                   HttpServletResponse httpServletResponse) {
-        ServiceResponse response = new ServiceResponse();
 
         try {
             authenticationService.logout(token);
@@ -62,13 +59,11 @@ public class AuthenticationController {
             httpServletResponse.addCookie(nullCookie);
         }
         catch (Exception ex) {
-            response.setResult(false);
-            return response;
+            httpServletResponse.setStatus(400);
+            return;
         }
 
-        response.setResult(true);
-
-        return response;
+        return;
     }
 
 
