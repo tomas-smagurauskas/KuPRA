@@ -21,6 +21,7 @@ public class Recipe {
     private User author;
     private Boolean privacy;
     private List<RecipeIngredient> recipeIngredients;
+    private List<RecipePhoto> recipePhotos;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -105,5 +106,15 @@ public class Recipe {
 
     public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
         this.recipeIngredients = recipeIngredients;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "recipePhotos")
+    public List<RecipePhoto> getRecipePhoto() {
+        return this.recipePhotos;
+    }
+
+    public void setRecipePhoto(List<RecipePhoto> recipePhotos) {
+        this.recipePhotos = recipePhotos;
     }
 }
