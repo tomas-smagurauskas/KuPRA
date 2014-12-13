@@ -14,4 +14,5 @@ public class RestUrls {
     public static final String REGISTER = "/register";
 
     public static final String MEASUREMENT_UNITS = "/measurementUnits";
+    public static final String INGREDIENTS = "/ingredients";
 }
