@@ -4,3 +4,5 @@ release
 web/src/main/webapp/resources/
 api/api.iml
 web/web.iml
+*.class
+.DS_STORE
