@@ -41,6 +41,6 @@ public class MeasurementUnit {
     public void setType(Integer type) {
         this.type = type;
     }
-    
+
 }
 

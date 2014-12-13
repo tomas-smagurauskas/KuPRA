@@ -50,4 +50,44 @@ public class IngredientController {
 
     }
 
+    @RequestMapping(value = RestUrls.INGREDIENTS + "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Ingredient getIngredient(@PathVariable(value = "id") String id, HttpServletResponse response) {
+
+        try {
+            return ingredientService.getById(Integer.parseInt(id));
+        }
+        catch (Exception e) {
+            response.setStatus(500);
+            return null;
+        }
+    }
+
+    @RequestMapping(value = RestUrls.INGREDIENTS + "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void deleteIngredient(@PathVariable(value = "id") String id, HttpServletResponse response) {
+
+        try {
+            ingredientService.delete(Integer.parseInt(id));
+            return;
+        }
+        catch (Exception e) {
+            response.setStatus(500);
+            return;
+        }
+    }
+
+    @RequestMapping(value = RestUrls.INGREDIENTS, method = RequestMethod.PUT)
+    @ResponseBody
+    public Ingredient updateIngredient(@RequestBody Ingredient ingredient, HttpServletResponse response) {
+
+        try {
+            return ingredientService.update(ingredient);
+        }
+        catch (Exception e) {
+            response.setStatus(500);
+            return null;
+        }
+    }
+
 }
