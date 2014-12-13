@@ -1,12 +1,35 @@
-div#login-form-submit {
-    float:right;
+h1.separator {
+    border: 5px solid black;
 }
 
-div#login-form-content {
-    float:right;
+.image {
+    width: 220px;
+    height: 220px;
+    background-color: #2b669a;
+    margin: 0 auto;
 }
 
-label:before {
-    content: "\a";
-    white-space: pre;
+.no-weight {
+    font-weight: normal;
+}
+
+.top20 {
+    margin-top: 20px;
+}
+
+.padding {
+    padding: 5px;
+}
+
+.valign {
+    margin: auto 0;
+}
+
+#topbar {
+    height: 60px;
+    padding: 10px 0;
+}
+
+div.login-btn {
+    padding-left: 80px;
 }
