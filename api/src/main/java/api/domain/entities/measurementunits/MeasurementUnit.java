@@ -11,6 +11,7 @@ public class MeasurementUnit {
 
     private Integer id;
     private String name;
+    private Integer type;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,5 +31,14 @@ public class MeasurementUnit {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @CollectionTable(name = "type")
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

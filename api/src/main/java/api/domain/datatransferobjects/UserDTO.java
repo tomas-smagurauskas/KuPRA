@@ -11,6 +11,9 @@ public class UserDTO {
     private String username;
     private UserRole role;
     private Integer id;
+    private String name;
+    private String surname;
+    private String email;
 
     public String getUsername() {
         return username;
@@ -36,12 +39,39 @@ public class UserDTO {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public static UserDTO fromEntity(User user) {
         UserDTO userDTO = new UserDTO();
 
         userDTO.setUsername(user.getUsername());
         userDTO.setRole(user.getRole());
         userDTO.setId(user.getId());
+        userDTO.setName(user.getName());
+        userDTO.setSurname(user.getSurname());
+        userDTO.setEmail(user.getEmail());
 
         return userDTO;
     }

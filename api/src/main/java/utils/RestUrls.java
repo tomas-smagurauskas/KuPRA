@@ -12,4 +12,6 @@ public class RestUrls {
     public static final String LOGOUT = "/logout";
     public static final String GET_ACTIVE_USER = "/activeUser";
     public static final String REGISTER = "/register";
+
+    public static final String MEASUREMENT_UNITS = "/measurementUnits";
 }

@@ -15,6 +15,9 @@ public class User {
     private Integer id;
     private String username;
     private String password;
+    private String name;
+    private String surname;
+    private String email;
     private UserRole role;
 
     @Id
@@ -53,5 +56,32 @@ public class User {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Column(name = "surname")
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
