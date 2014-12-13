@@ -1,0 +1,12 @@
+div#login-form-submit {
+    float:right;
+}
+
+div#login-form-content {
+    float:right;
+}
+
+label:before {
+    content: "\a";
+    white-space: pre;
+}
