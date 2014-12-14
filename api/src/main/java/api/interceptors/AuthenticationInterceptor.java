@@ -80,6 +80,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
             response.setHeader("Access-Control-Expose-Headers", "x-requested-with");
         }
         catch (Exception ex) {
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+            response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+            response.setHeader("Access-Control-Expose-Headers", "x-requested-with");
             response.setStatus(401);
             return false;
         }
@@ -91,7 +95,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest request,
                            HttpServletResponse response, Object handler,
                            ModelAndView modelAndView) throws Exception {
-
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        response.setHeader("Access-Control-Expose-Headers", "x-requested-with");
     }
 
     @Override
