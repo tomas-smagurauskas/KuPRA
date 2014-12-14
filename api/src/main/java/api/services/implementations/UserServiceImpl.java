@@ -3,7 +3,9 @@ package api.services.implementations;
 import api.domain.entities.authentication.User;
 import api.domain.entities.authentication.enums.UserRole;
 import api.domain.entities.fridge.Fridge;
+import api.domain.entities.menu.Menu;
 import api.domain.repositories.FridgeRepository;
+import api.domain.repositories.MenuRepository;
 import api.domain.repositories.UserRepository;
 import api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     FridgeRepository fridgeRepository;
 
+    @Autowired
+    MenuRepository menuRepository;
+
     @Override
     public User createUser(User user) {
 
@@ -30,6 +35,10 @@ public class UserServiceImpl implements UserService {
         Fridge fridge = new Fridge();
         fridge.setUser(user);
         fridgeRepository.saveAndFlush(fridge);
+
+        Menu menu = new Menu();
+        menu.setOwner(user);
+        menuRepository.saveAndFlush(menu);
 
         return user;
     }

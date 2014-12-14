@@ -2,6 +2,7 @@ package api.domain.entities.authentication;
 
 import api.domain.entities.authentication.enums.UserRole;
 import api.domain.entities.fridge.Fridge;
+import api.domain.entities.menu.Menu;
 
 import javax.persistence.*;
 
@@ -21,6 +22,7 @@ public class User {
     private String email;
     private UserRole role;
     private Fridge fridge;
+    private Menu menu;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -95,5 +97,15 @@ public class User {
 
     public void setFridge(Fridge fridge) {
         this.fridge = fridge;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "menu")
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 }
