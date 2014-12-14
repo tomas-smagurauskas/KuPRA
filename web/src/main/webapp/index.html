@@ -1,44 +1,36 @@
-<!DOCTYPE html>
-<html ng-app="KuPRA" xmlns="http://www.w3.org/1999/html">
-    <head>
-        <meta charset='utf-8'>
-        <link rel="stylesheet" href="css/style.css">
-        <script src="resources/angular/angular.min.js"></script>
-        <script src="resources/angular-route/angular-route.min.js"></script>
-        <script src="app.js"></script>
-    </head>
-
-    <body>
-        <div id="topbar">
-            <div id="topbar-guest" ng-show="true">
-                <div id="login-form-submit">
-                    <input type="submit" value="Prisijungti"/>
-                </div>
-                <div id="login-form-content">
-                    <label for="l-username">Prisijungimas</label><input type="text" id="l-username" />
-                    <label for="l-password">Slaptažodis</label><input type="password" id="l-password" />
-                </div>
-            </div>
-            <div id="logged" ng-show="true">
-
+<div class="container col-md-10">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <!-- NEWEST -->
+            <div>
+                <a href="#id">
+                    <div class="photo">
+                        <div class="image">
+                            <img alt="name" src="photosrc.jpg"/>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h1>name (rating)</h1>
+                        <div class="short-description">shortDescription</div>
+                    </div>
+                </a>
             </div>
         </div>
-
-        <div id="content">
-            <div id="content-guest" ng-show="true">
-                <div id="welcome">
-                    <h1>Sveiki atvykę į KuPRA</h1>
-                </div>
-                <div id="register">
-                    <h1>Registracija</h1>
-                    <label for="r-username">Prisijungimo vardas</label><input type="text" id="r-username"/>
-                    <label for="r-email">Elektroninis paštas</label><input type="email" id="r-email"/>
-                    <label for="r-name">Vardas</label><input type="text" id="r-name"/>
-                    <label for="r-surname">Pavardė</label><input type="text" id="r-surname"/>
-                    <label for="r-password">Slaptažodis</label><input type="password" id="r-password"/>
-                    <label for="r-password-repeat">Pakartoti slaptažodį</label><input type="password" id="r-password-repeat"/>
-                </div>
+        <div class="col-md-6 text-center">
+            <!-- POPULAR -->
+            <div>
+                <a href="#id">
+                    <div class="photo">
+                        <div class="image">
+                            <img alt="name" src="photosrc.jpg"/>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h1>name (rating)</h1>
+                        <div class="short-description">shortDescription</div>
+                    </div>
+                </a>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
