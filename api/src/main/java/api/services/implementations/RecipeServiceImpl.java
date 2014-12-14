@@ -53,12 +53,12 @@ public class RecipeServiceImpl implements RecipeService {
 
         recipe = recipeRepository.saveAndFlush(recipe);
 
-        return recipe;
+        return removeDuplicates(recipe);
     }
 
     @Override
     public List<Recipe> getAllRecipes() {
-        return recipeRepository.findAll();
+        return removeDuplicates(recipeRepository.findAll());
     }
 
     @Override
@@ -82,17 +82,60 @@ public class RecipeServiceImpl implements RecipeService {
         recipe.setRecipePhoto(recipePhotos);
         recipe.setRecipeIngredients(recipeIngredients);
 
-        return recipeRepository.saveAndFlush(recipe);
+        return removeDuplicates(recipeRepository.saveAndFlush(recipe));
     }
 
     @Override
     public Recipe getById(Integer id) {
-        return recipeRepository.findOne(id);
+        return removeDuplicates(recipeRepository.findOne(id));
     }
 
     @Override
     public void delete(Integer id) {
         recipeRepository.delete(id);
+    }
+
+    public Recipe removeDuplicates(Recipe recipe) {
+        List<RecipePhoto> recipePhotoList = new ArrayList<RecipePhoto>();
+
+        if (recipe.getRecipePhoto() != null) {
+            for (RecipePhoto recipePhoto : recipe.getRecipePhoto()) {
+                if (!recipePhotoList.contains(recipePhoto)) {
+                    recipePhotoList.add(recipePhoto);
+                }
+            }
+        }
+
+        recipe.setRecipePhoto(recipePhotoList);
+
+        List<RecipeIngredient> recipeIngredientList = new ArrayList<RecipeIngredient>();
+
+        if (recipe.getRecipeIngredients() != null) {
+            for (RecipeIngredient recipeIngredient: recipe.getRecipeIngredients()) {
+                if (!recipeIngredientList.contains(recipeIngredient)) {
+                    recipeIngredientList.add(recipeIngredient);
+                }
+            }
+        }
+
+        recipe.setRecipeIngredients(recipeIngredientList);
+
+        return recipe;
+    }
+
+    public List<Recipe> removeDuplicates(List<Recipe> recipeList) {
+        List<Recipe> recipes = new ArrayList<Recipe>();
+
+        if (recipeList != null) {
+            for (Recipe recipe : recipeList) {
+                recipe = removeDuplicates(recipe);
+                if (!recipes.contains(recipe)) {
+                    recipes.add(recipe);
+                }
+            }
+        }
+
+        return recipes;
     }
 
 }

@@ -46,4 +46,5 @@ public class RecipeIngredient {
     public void setQuantity(MeasurementUnit quantity) {
         this.quantity = quantity;
     }
+
 }

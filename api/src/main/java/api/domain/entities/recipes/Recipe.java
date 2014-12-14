@@ -99,7 +99,7 @@ public class Recipe {
     }
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "recipeIngredients")
+    @JoinColumn(name = "recipe")
     public List<RecipeIngredient> getRecipeIngredients() {
         return recipeIngredients;
     }
@@ -109,7 +109,7 @@ public class Recipe {
     }
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "recipePhotos")
+    @JoinColumn(name = "recipe")
     public List<RecipePhoto> getRecipePhoto() {
         return this.recipePhotos;
     }
