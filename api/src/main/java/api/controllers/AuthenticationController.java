@@ -27,6 +27,11 @@ public class AuthenticationController {
                                  HttpServletRequest httpServletRequest) {
         ServiceResponse response = new ServiceResponse();
 
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+        httpServletResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+        httpServletResponse.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        httpServletResponse.setHeader("Access-Control-Expose-Headers", "x-requested-with");
+
         try {
             Session session = authenticationService.login(user.getUsername(), user.getPassword());
 
@@ -50,16 +55,21 @@ public class AuthenticationController {
     @RequestMapping(value = RestUrls.LOGOUT)
     @ResponseBody
     public void logout(@CookieValue("sessionToken") String token,
-                                  HttpServletResponse httpServletResponse) {
+                                  HttpServletResponse response) {
+
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        response.setHeader("Access-Control-Expose-Headers", "x-requested-with");
 
         try {
             authenticationService.logout(token);
             Cookie nullCookie = new Cookie("sessionToken", "");
             nullCookie.setMaxAge(0);
-            httpServletResponse.addCookie(nullCookie);
+            response.addCookie(nullCookie);
         }
         catch (Exception ex) {
-            httpServletResponse.setStatus(400);
+            response.setStatus(400);
             return;
         }
 

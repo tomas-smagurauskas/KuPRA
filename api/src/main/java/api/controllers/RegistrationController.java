@@ -25,6 +25,11 @@ public class RegistrationController {
     @ResponseBody
     public UserDTO register(@RequestBody User user, HttpServletResponse httpServletResponse) {
 
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+        httpServletResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+        httpServletResponse.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        httpServletResponse.setHeader("Access-Control-Expose-Headers", "x-requested-with");
+
         try {
             user = userService.createUser(user);
             user.setPassword(null);
