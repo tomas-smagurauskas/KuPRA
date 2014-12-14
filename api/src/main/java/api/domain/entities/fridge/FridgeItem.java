@@ -1,15 +1,15 @@
-package api.domain.entities.recipes;
+package api.domain.entities.fridge;
 
 import api.domain.entities.ingredients.Ingredient;
 
 import javax.persistence.*;
 
 /**
- * Created by tomas on 14.12.13.
+ * Created by tomas on 14.12.14.
  */
 @Entity
-@Table(name = "recipeIngredients")
-public class RecipeIngredient {
+@Table(name = "fridgeItems")
+public class FridgeItem {
 
     private Integer id;
     private Ingredient ingredient;
@@ -44,5 +44,4 @@ public class RecipeIngredient {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-
 }
