@@ -7,23 +7,23 @@
 </head>
 
 <body>
-<div class="container height-auto" id="topbar">
+<div class="container height60">
     <?php
      if ($_GET['u'] != '') {
-         echo file_get_contents('topbar.html');
+         echo file_get_contents('topbar/user.html');
      }
      else {
-         echo file_get_contents('topbarGuest.html');
+         echo file_get_contents('topbar/guest.html');
      }
     ?>
 </div>
 
 <?php
     if ($_GET['u'] != '') {
-        echo file_get_contents('menu.html');
+        echo file_get_contents('menu/show.html');
         echo file_get_contents($_GET['u']);
     } else {
-        echo file_get_contents('guest.html');
+        echo file_get_contents('index/guest.html');
     }
 ?>
 

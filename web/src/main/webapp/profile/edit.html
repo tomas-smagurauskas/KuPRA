@@ -12,28 +12,25 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <div class="row text-left">
-                    <div class="col-md-1"></div>
-                    <h3 class="col-md-5">Slaptažodis:</h3>
-                    <div class="col-md-1"></div>
-                    <input type="password" class="col-md-5 top20"/>
+                <div class="form-group text-left">
+                    <label for="password">Slaptažodis:</label>
+                    <input type="password" id="password" class="form-control"/>
                 </div>
-                <div class="row text-left">
-                    <div class="col-md-1"></div>
-                    <h3 class="col-md-6">Pakartoti slaptažodį:</h3>
-                    <input type="password" class="col-md-5 top20"/>
+                <div class="form-group text-left">
+                    <label for="password-repeat">Pakartoti slaptažodį:</label>
+                    <input type="password" id="password-repeat" class="form-control"/>
                 </div>
                 <div class="col-md-1"></div>
             </div>
         </div>
-        <div class="row top20">
-            <div class="col-md-2"></div>
-                        <textarea class="col-md-8 text-left padding table-bordered">
-                            Aprasymas
-                        </textarea>
+        <div class="col-md-2"></div>
+        <div class="row top20 col-md-8 text-center">
+                <div class="col-md-2 text-left"></div>
+                <label class="pull-left" for="description">Aprašymas</label>
+                <textarea id="description" class="text-left form-control"></textarea>
             <div class="col-md-2"></div>
         </div>
-        <div class="row top20">
+        <div class="row col-md-12 top20">
             <div class="col-md-1 pull-right"></div>
             <button class="col-md-2 pull-right">
                 Išsaugoti
