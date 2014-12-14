@@ -28,8 +28,21 @@ h1.separator {
 #topbar {
     height: 60px;
     padding: 10px 0;
+    background-color: aquamarine;
 }
 
-div.login-btn {
+.height60 {
+    height: 60px;
+}
+
+div.login-btn { 
     padding-left: 80px;
+}
+
+.margin-width-40 {
+    margin: 0 20px;
+}
+
+.margin-right-20 {
+    margin-right: 20px;
 }
