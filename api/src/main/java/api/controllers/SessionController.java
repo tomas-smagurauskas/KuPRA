@@ -26,6 +26,13 @@ public class SessionController {
 
         UserDTO activeUser = null;
 
+
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+        response.setHeader("Access-Control-Expose-Headers", "x-requested-with");
+
+
         try {
             activeUser = sessionService.getActiveUser(request);
         }
